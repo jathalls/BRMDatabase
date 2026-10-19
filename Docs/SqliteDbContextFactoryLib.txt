@@ -1,0 +1,172 @@
+﻿From Goose:-
+
+Project File:-
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>
+
+DbContextFactoryImplementation:-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace SqliteDbContextFactoryLib
+{
+    /// <summary>
+    /// Factory for creating DbContext instances for SQLite databases with dependency injection support
+    /// </summary>
+    public class DbContextFactory
+    {
+        private readonly string _connectionString;
+
+        /// <summary>
+        /// Initializes a new instance of the DbContextFactory class
+        /// </summary>
+        /// <param name="databasePath">Path to the SQLite database file</param>
+        public DbContextFactory(string databasePath)
+        {
+            if (string.IsNullOrEmpty(databasePath))
+                throw new ArgumentException("Database path cannot be null or empty", nameof(databasePath));
+                
+            _connectionString = $"Data Source={databasePath}";
+        }
+
+        /// <summary>
+        /// Creates a new instance of the DbContext
+        /// </summary>
+        /// <typeparam name="TContext">The type of DbContext to create</typeparam>
+        /// <returns>DbContext instance</returns>
+        public TContext CreateContext<TContext>() where TContext : DbContext, new()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TContext>();
+            optionsBuilder.UseSqlite(_connectionString);
+            
+            return new TContext();
+        }
+
+        /// <summary>
+        /// Configures services for dependency injection
+        /// </summary>
+        /// <typeparam name="TContext">The type of DbContext to register</typeparam>
+        /// <param name="services">Service collection to configure</param>
+        public void ConfigureServices<TContext>(IServiceCollection services) where TContext : DbContext
+        {
+            services.AddDbContext<TContext>(options =>
+                options.UseSqlite(_connectionString));
+        }
+    }
+}
+
+Example Usage Conext:-
+using Microsoft.EntityFrameworkCore;
+
+namespace SqliteDbContextFactoryLib
+{
+    /// <summary>
+    /// Example database context that demonstrates usage with the factory
+    /// </summary>
+    public class TodoContext : DbContext
+    {
+        public TodoContext(DbContextOptions<TodoContext> options) : base(options)
+        {
+        }
+
+        /// <summary>
+        /// Sample entity for demonstration purposes
+        /// </summary>
+        public DbSet<TodoItem> Todos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TodoItem>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(1000);
+            });
+        }
+    }
+
+    /// <summary>
+    /// Sample model class
+    /// </summary>
+    public class TodoItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public bool IsCompleted { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+    }
+}
+
+Usage Examples-
+Basic Usage:-
+// Create the factory pointing to your existing database
+var factory = new DbContextFactory(@"C:\path\to\your\database.db");
+
+// Create a context instance for use in your application
+using var context = factory.CreateContext<TodoContext>();
+
+With DependencyInjection:-
+// In your MauiProgram.cs
+public static MauiApp CreateMauiApp()
+{
+    var builder = MauiApp.CreateBuilder();
+    builder.UseMauiApp<App>();
+    
+    // Configure services with the factory
+    var factory = new DbContextFactory(@"C:\path\to\your\database.db");
+    factory.ConfigureServices<TodoContext>(builder.Services);
+    
+    return builder.Build();
+}
+
+Using with repository Pattern:-
+public class TodoRepository
+{
+    private readonly DbContextFactory _factory;
+    
+    public TodoRepository(DbContextFactory factory)
+    {
+        _factory = factory;
+    }
+    
+    public async Task<List<TodoItem>> GetAllTodosAsync()
+    {
+        using var context = _factory.CreateContext<TodoContext>();
+        return await context.Todos.ToListAsync();
+    }
+    
+    public async Task AddTodoAsync(TodoItem todo)
+    {
+        using var context = _factory.CreateContext<TodoContext>();
+        context.Todos.Add(todo);
+        await context.SaveChangesAsync();
+    }
+}
+
+======================
+Implementation Notes:-
+Implementation Notes
+Framework Compatibility: Targets .NET 8.0 for modern EF Core support
+Database Path Handling: Properly handles file paths with connection string formatting
+Dependency Injection Support: Includes service registration for DI containers
+Generic Factory Pattern: Supports creating any DbContext derived type
+Error Handling: Validates database path input
+MAUI Ready: Designed specifically for use in MAUI applications
+
+Installation:-
+dotnet new classlib -n SqliteDbContextFactoryLib
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+Copy the implementation files to your project
+Reference this library in your .NET MAUI application
