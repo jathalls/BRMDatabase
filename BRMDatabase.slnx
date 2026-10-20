@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../DBTest/DBTest.csproj" Id="4b74f233-133e-4afe-8438-bad6a691b93c" />
   <Project Path="BRMDatabase.csproj" />
 </Solution>
