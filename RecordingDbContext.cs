@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace SqliteDbContextFactoryLib
+namespace BRMDatabase
 {
     /// <summary>
     /// Database context for recording sessions and recordings
@@ -88,6 +88,7 @@ namespace SqliteDbContextFactoryLib
                 entity.Property(e => e.Label).HasMaxLength(255);
                 entity.Property(e => e.Value).HasMaxLength(1000);
                 entity.Property(e => e.Type).HasMaxLength(255);
+               
 
                 entity.HasOne(m => m.Recording)
                     .WithMany(r => r.Metas)
@@ -187,7 +188,7 @@ namespace SqliteDbContextFactoryLib
                     .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(c => c.Segment)
-                    .WithMany(s => s.SegmentCalls)
+                    .WithMany(s => s.Calls)
                     .HasForeignKey(c => c.SegmentID)
                     .OnDelete(DeleteBehavior.Cascade);
             });

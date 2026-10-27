@@ -1,10 +1,20 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+
 namespace BRMDatabase.Tables;
 
 
-public class RecordingSession
-{
+public class RecordingSession :INotifyPropertyChanged
 
-    
+{
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected void OnPropertyChanged([CallerMemberName] string PropertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+    }
+
     public int ID { get; set; }
 
     [XmlAttribute("SessionTag")]
@@ -13,9 +23,8 @@ public class RecordingSession
     public DateTime SessionStart { get; set; }
 
     public DateTime SessionEnd { get; set; }
+
     
-
-
 
     [XmlAttribute("Temp")]
     public decimal Temp { get; set; }
@@ -52,10 +61,10 @@ public class RecordingSession
     [XmlAttribute("Weather")]
     public string Weather { get; set; } = string.Empty;
 
-    public ICollection<Recording> Recordings { get; set; } = new List<Recording>();
+    public virtual ICollection<Recording> Recordings { get; set; } = new List<Recording>();
 
-    public ICollection<LabelledSegment> Segments { get; set; } = new List<LabelledSegment>();
+    public virtual  ICollection<LabelledSegment> Segments { get; set; } = new List<LabelledSegment>();
 
-    public ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
+    public virtual ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
 
 }

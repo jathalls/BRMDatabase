@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SqliteDbContextFactoryLib
+namespace BRMDatabase
 {
     /// <summary>
     /// Factory for creating DbContext instances for recording database with SQLite
@@ -30,6 +30,7 @@ namespace SqliteDbContextFactoryLib
         {
             var optionsBuilder = new DbContextOptionsBuilder<RecordingDbContext>();
             optionsBuilder.UseSqlite(_connectionString);
+            optionsBuilder.UseLazyLoadingProxies();
             
             return new RecordingDbContext(optionsBuilder.Options);
         }
@@ -41,7 +42,7 @@ namespace SqliteDbContextFactoryLib
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RecordingDbContext>(options =>
-                options.UseSqlite(_connectionString));
+                options.UseSqlite(_connectionString).UseLazyLoadingProxies());
         }
     }
 }

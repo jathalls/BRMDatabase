@@ -24,11 +24,11 @@ namespace BRMDatabase.Tables;
    
     public int SessionID { get; set;  } = -1;
 
-    public LabelledSegment? Segment { get; set; } = null;
+    public virtual  LabelledSegment? Segment { get; set; } = null;
 
-    public Recording? Recording { get; set;  } = null;
+    public virtual  Recording? Recording { get; set;  } = null;
 
-    public RecordingSession? Session { get; set; } = null;
+    public virtual RecordingSession? Session { get; set; } = null;
 
     
  }

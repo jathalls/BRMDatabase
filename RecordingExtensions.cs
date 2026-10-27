@@ -11,12 +11,12 @@ namespace SqliteDbContextFactoryLib
         public bool IsSelected { get; set; }
         public int TotalRecordingCount { get; set; }
         public TimeSpan TotalDuration { get; set; }
-        public string DisplayDate => CreatedDate.ToString("yyyy-MM-dd");
+        public string DisplayDate => SessionStart.ToString("yyyy-MM-dd");
         
         // Additional functionality
         public string GetSessionSummary()
         {
-            return $"Session '{Name}' with {Recordings?.Count ?? 0} recordings";
+            return $"Session '{SessionTag}' with {Recordings?.Count ?? 0} recordings";
         }
 
         public bool HasRecordings()
@@ -38,13 +38,15 @@ namespace SqliteDbContextFactoryLib
         // Additional fields that don't need to be stored in DB
         public bool IsSelected { get; set; }
         public string FileSizeDisplay { get; set; } = string.Empty;
-        public string DurationDisplay => FormatDuration(Duration);
+        public string DurationDisplay => FormatDuration((int)(RecordingEndTime-RecordingStartTime).TotalSeconds);
         public string DisplayDate => RecordingDate.ToString("yyyy-MM-dd HH:mm");
+
+        public double Duration { get => (RecordingEndTime - RecordingStartTime).TotalSeconds; } 
         
         // Additional functionality
         public string GetRecordingDetails()
         {
-            return $"Recording: {FileName} ({DurationDisplay})";
+            return $"Recording: {RecordingName} ({DurationDisplay})";
         }
 
         public bool IsRecent(int hours = 24)
@@ -73,12 +75,12 @@ namespace SqliteDbContextFactoryLib
         {
             return new RecordingEx
             {
-                Id = recording.Id,
-                FileName = recording.FileName,
-                FilePath = recording.FilePath,
-                Duration = recording.Duration,
-                RecordingDate = recording.RecordingDate,
-                SessionId = recording.SessionId,
+                ID = recording.ID,
+                RecordingName=recording.RecordingName,
+                RecordingStartTime=recording.RecordingStartTime,
+                RecordingEndTime=recording.RecordingEndTime,
+                RecordingNotes=recording.RecordingNotes,
+                SessionID = recording.SessionID,
                 
                 // Copy the navigation property if it exists
                 Session = recording.Session,
@@ -96,16 +98,16 @@ namespace SqliteDbContextFactoryLib
         {
             return new RecordingSessionEx
             {
-                Id = session.Id,
-                Name = session.Name,
-                Description = session.Description,
-                CreatedDate = session.CreatedDate,
+                ID = session.ID,
+                SessionTag= session.SessionTag,
+                SessionNotes= session.SessionNotes,
+                SessionStart= session.SessionStart,
                 Recordings = session.Recordings,
 
                 // Extended properties (not in DB)
                 IsSelected = false,
                 TotalRecordingCount = session.Recordings?.Count ?? 0,
-                TotalDuration = TimeSpan.FromSeconds(session.Recordings?.Sum(r => r.Duration) ?? 0),
+                TotalDuration = TimeSpan.FromSeconds(session.Recordings?.Sum(r => (r?.RecordingEndTime-r?.RecordingStartTime)?.TotalSeconds)??0) ,
             };
         }
 
@@ -125,7 +127,7 @@ namespace SqliteDbContextFactoryLib
         /// </summary>
         public static TimeSpan GetTotalDuration(this RecordingSession session)
         {
-            return TimeSpan.FromSeconds(session.Recordings?.Sum(r => r.Duration) ?? 0);
+            return TimeSpan.FromSeconds(session.Recordings?.Sum(r => (r?.RecordingEndTime - r?.RecordingStartTime)?.TotalSeconds) ?? 0);
         }
     }
 }

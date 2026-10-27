@@ -14,7 +14,7 @@ namespace BRMDatabase.Tables;
      public string Label { get; set; } = string.Empty;
      public string Notes { get; set; }
 
-    public ICollection<BatTag> Tags { get; set; } = new List<BatTag>();
+    public virtual ICollection<BatTag> Tags { get; set; } = new List<BatTag>();
 
-    public ICollection<Call> BatCalls { get; set; } = new List<Call>();
+    public virtual ICollection<Call> BatCalls { get; set; } = new List<Call>();
  }

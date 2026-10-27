@@ -29,7 +29,9 @@ namespace BRMDatabase
         public TContext CreateContext<TContext>() where TContext : DbContext, new()
         {
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
+            optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlite(_connectionString);
+            
 
             return new TContext();
         }
@@ -42,7 +44,7 @@ namespace BRMDatabase
         public void ConfigureServices<TContext>(IServiceCollection services) where TContext : DbContext
         {
             services.AddDbContext<TContext>(options =>
-                options.UseSqlite(_connectionString));
+                options.UseSqlite(_connectionString).UseLazyLoadingProxies());
         }
     }
 }

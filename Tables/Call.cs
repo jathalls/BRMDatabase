@@ -68,7 +68,7 @@ public class Call
   
     public int SegmentID { get; set; } = -1;
 
-    public Bat? Bat { get; set; } = null;
+    public virtual Bat? Bat { get; set; } = null;
 
-    public LabelledSegment? Segment { get; set; } = null;
+    public virtual LabelledSegment? Segment { get; set; } = null;
 }

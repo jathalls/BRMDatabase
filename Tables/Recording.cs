@@ -1,9 +1,16 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace BRMDatabase.Tables;
 
 
-public class Recording
+public class Recording : INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected void OnPropertyChanged([CallerMemberName] string PropertyName = "") { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName)); }
+
     
+
     public int ID { get; set; } = 0;
 
     
@@ -43,17 +50,17 @@ public class Recording
         set { _recordingDate = value; }
     }
 
-    private DateTime _recordingDate = new DateTime();
+    public DateTime _recordingDate = new DateTime();
 
     
     public int SessionID { get; set; } = 0;
 
-    public RecordingSession Session { get; set; } = null;
+    public virtual RecordingSession Session { get; set; } = null;
 
-    public ICollection<LabelledSegment> LabelledSegments= new List<LabelledSegment>();
+    public virtual ICollection<LabelledSegment> LabelledSegments { get; set; } = new List<LabelledSegment>();
 
-    public ICollection<Meta> Metas=new List<Meta>();
+    public virtual ICollection<Meta> Metas { get; set; } = new List<Meta>();
 
-    public ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
+    public virtual ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
 
 }

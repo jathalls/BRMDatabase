@@ -9,7 +9,7 @@ namespace BRMDatabase.Tables;
   
      public int RecordingID { get; set; } = 0;
 
-    public Recording? Recording { get; set; } = null;
+    public virtual  Recording? Recording { get; set; } = null;
 
 
      public DateTime StartOffset { get; set; }
@@ -27,11 +27,11 @@ namespace BRMDatabase.Tables;
 
     public int SessionID { get; set; } = -1;
 
-    public RecordingSession? Session { get; set; } = null;
+    public virtual RecordingSession? Session { get; set; } = null;
 
-    public ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
+    public virtual ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
 
-    public ICollection<Call> SegmentCalls { get; set; } = new List<Call>();
+    public virtual ICollection<Call> Calls { get; set; } = new List<Call>();
 
 
 }

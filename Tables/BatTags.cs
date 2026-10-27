@@ -11,6 +11,6 @@ public class BatTag
  
       public int BatID { get; set; }
 
-    public Bat? Bat { get; set; } = null;
+    public virtual Bat? Bat { get; set; } = null;
   }
   

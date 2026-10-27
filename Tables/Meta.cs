@@ -14,8 +14,10 @@ public class Meta
     [XmlAttribute("Type")]
     public string Type {  get; set; }
 
+   
+
     
     public int RecordingID { get; set; }
 
-    public Recording? Recording { get; set; } = null;
+    public virtual Recording? Recording { get; set; } = null;
 }
