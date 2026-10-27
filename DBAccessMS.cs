@@ -21,7 +21,16 @@
             
         }
 
-        public static RecordingDbContext recordingDbContext { get; set; } = null;
+        public static void CloseConnection()
+        {
+            if(recordingDbContext is not null)
+            {
+                recordingDbContext.Dispose();
+                recordingDbContext = null;
+            }
+        }
+
+        public static RecordingDbContext? recordingDbContext { get; set; } = null;
 
         internal static RecordingDbContext? GetContext()
         {
