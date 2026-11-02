@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
@@ -63,8 +64,66 @@ public class RecordingSession :INotifyPropertyChanged
 
     public virtual ICollection<Recording> Recordings { get; set; } = new List<Recording>();
 
-    public virtual  ICollection<LabelledSegment> Segments { get; set; } = new List<LabelledSegment>();
+    public int NumberOfRecordings { get=>Recordings?.Count ?? 0;}
 
-    public virtual ICollection<IdedBat> IdedBats { get; set; } = new List<IdedBat>();
+    /// <summary>
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// NotMapped
+    /// </summary>
+
+    [NotMapped]
+    private string _batNames = "";
+
+    [NotMapped]
+    public string BatNames
+    {
+        get
+        {
+            var res = _batNames; ;
+            if (string.IsNullOrWhiteSpace(res))
+            {
+                return GetBatNames();
+
+            }
+            else
+            {
+                return res;
+            }
+        }
+        set => _batNames= value;
+    }
+
+    //public List<LabelledSegment> Segments { get => Recordings.SelectMany(r => r.LabelledSegments).ToList(); }
+
+    /// <summary>
+    /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Functions
+    /// 
+
+
+
+    /// </summary>
+    /// <returns></returns>
+
+    public string GetBatNames()
+    {
+        string result = "";
+
+        var uniqueBats = GetIdedBats();
+        foreach (var bat in uniqueBats)
+        {
+            result += bat.Name + Environment.NewLine;
+        }
+
+        BatNames = result;
+        return result;
+    }
+
+    public  List<IdedBat> GetIdedBats ()
+    {
+        return Recordings.SelectMany(r => r.IdedBats).DistinctBy(b=>b.Name).ToList(); 
+    }
+
+
 
 }

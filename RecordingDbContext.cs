@@ -110,10 +110,10 @@ namespace BRMDatabase
                     .HasForeignKey(l=> l.RecordingID)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasOne(l => l.Session)
+              /*  entity.HasOne(l => l.Session)
                     .WithMany(s => s.Segments)
                     .HasForeignKey(l=>l.SessionID)
-                    .OnDelete(DeleteBehavior.Cascade);
+                    .OnDelete(DeleteBehavior.Cascade);*/
             });
 
             //Configure IdedBats
@@ -127,14 +127,7 @@ namespace BRMDatabase
                     .WithMany(s => s.IdedBats)
                     .HasForeignKey(ib => ib.SegmentID)
                     .OnDelete(DeleteBehavior.Cascade);
-                entity.HasOne(ib => ib.Session)
-                    .WithMany(s => s.IdedBats)
-                    .HasForeignKey(ib => ib.SessionID)
-                    .OnDelete(DeleteBehavior.Cascade);
-                entity.HasOne(ib => ib.Recording)
-                    .WithMany(r => r.IdedBats)
-                    .HasForeignKey(ib => ib.RecordingID)
-                    .OnDelete(DeleteBehavior.Cascade);
+                
             });
 
             //Configure Bats

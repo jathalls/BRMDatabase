@@ -64,9 +64,9 @@ public class Call
     [XmlAttribute("ByAutoID")]
     public bool ByAutoID { get; set; } = false;
  
-    public int batID { get; set; } = -1;
+    public int? batID { get; set; } = 0;
   
-    public int SegmentID { get; set; } = -1;
+    public int? SegmentID { get; set; } = 0;
 
     public virtual Bat? Bat { get; set; } = null;
 

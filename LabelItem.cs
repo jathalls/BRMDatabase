@@ -33,7 +33,7 @@ public class LabelItem
     /// <param name="startSecs"></param>
     /// <param name="endSecs"></param>
     /// <returns></returns>
-    internal bool Overlaps(double startSecs, double endSecs)
+    public bool Overlaps(double startSecs, double endSecs)
     {
         if (endSecs < startSecs)
         {
@@ -48,7 +48,7 @@ public class LabelItem
         
     }
 
-    internal bool Matches(double startSecs, double endSecs)
+    public bool Matches(double startSecs, double endSecs)
     {
         if (endSecs < startSecs)
         {

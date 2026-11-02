@@ -5,7 +5,7 @@ namespace SqliteDbContextFactoryLib
     /// <summary>
     /// Extended RecordingSession with additional functionality that doesn't belong in the database
     /// </summary>
-    public class RecordingSessionEx : RecordingSession
+    public class RecordingSession : RecordingSession
     {
         // Additional fields that don't need to be stored in DB
         public bool IsSelected { get; set; }
@@ -33,7 +33,7 @@ namespace SqliteDbContextFactoryLib
     /// <summary>
     /// Extended Recording with additional functionality that doesn't belong in the database
     /// </summary>
-    public class RecordingEx : Recording
+    public class Recording : Recording
     {
         // Additional fields that don't need to be stored in DB
         public bool IsSelected { get; set; }
@@ -66,14 +66,14 @@ namespace SqliteDbContextFactoryLib
     /// <summary>
     /// Extension methods for working with recording data
     /// </summary>
-    public static class RecordingExtensions
+    public static class Recordingtensions
     {
         /// <summary>
-        /// Converts a Recording to RecordingEx with additional functionality
+        /// Converts a Recording to Recording with additional functionality
         /// </summary>
-        public static RecordingEx ToExtendedRecording(this Recording recording)
+        public static Recording ToExtendedRecording(this Recording recording)
         {
-            return new RecordingEx
+            return new Recording
             {
                 ID = recording.ID,
                 RecordingName=recording.RecordingName,
@@ -92,11 +92,11 @@ namespace SqliteDbContextFactoryLib
         }
 
         /// <summary>
-        /// Converts a RecordingSession to RecordingSessionEx with additional functionality
+        /// Converts a RecordingSession to RecordingSession with additional functionality
         /// </summary>
-        public static RecordingSessionEx ToExtendedSession(this RecordingSession session)
+        public static RecordingSession ToExtendedSession(this RecordingSession session)
         {
-            return new RecordingSessionEx
+            return new RecordingSession
             {
                 ID = session.ID,
                 SessionTag= session.SessionTag,
@@ -114,7 +114,7 @@ namespace SqliteDbContextFactoryLib
         /// <summary>
         /// Gets recordings grouped by date
         /// </summary>
-        public static Dictionary<DateTime, List<RecordingEx>> GroupByDate(this IEnumerable<Recording> recordings)
+        public static Dictionary<DateTime, List<Recording>> GroupByDate(this IEnumerable<Recording> recordings)
         {
             return recordings
                 .Select(r => r.ToExtendedRecording())
