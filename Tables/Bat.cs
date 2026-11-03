@@ -43,6 +43,21 @@ namespace BRMDatabase.Tables;
         }
     }
 
+    [NotMapped]
+    public string FLow
+    {
+        get
+        {
+            string flow = "";
+            foreach(Call call in BatCalls?.ToList()??new List<Call>())
+            {
+                if (!string.IsNullOrEmpty(flow)) flow += " / ";
+                flow += $"{call.EndFrequency}+/-{call.EndFrequencyVariation:F2}";
+            }
+            return flow;
+        }
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////
     /// Functions
     /// 
