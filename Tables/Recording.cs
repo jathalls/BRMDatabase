@@ -1,3 +1,5 @@
+using BRM_2;
+using MauiLib1;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
@@ -670,6 +672,9 @@ public class Recording : INotifyPropertyChanged
 
     }
 
-    
-
+    public string GetGridRef()
+    {
+        var gridref = MauiLib1.GPSLocation.ConvertGPStoGridRef(RecordingGPSLatitude, RecordingGPSLongitude);
+        return gridref;
+    }
 }

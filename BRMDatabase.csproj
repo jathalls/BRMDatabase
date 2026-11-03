@@ -9,7 +9,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks> 
     <SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
 
 		<!-- Enable XAML source generation for faster build times and improved performance.
@@ -29,6 +29,7 @@
 
 	<ItemGroup>
 	  <Compile Remove="DbContextFactory.cs" />
+	  <Compile Remove="LabelItem.cs" />
 	  <Compile Remove="RecordingExtensions.cs" />
 	</ItemGroup>
 
@@ -41,7 +42,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="10.0.14" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.14" />
 	</ItemGroup>
 
 	<ItemGroup>
