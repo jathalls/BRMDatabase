@@ -37,7 +37,10 @@ namespace BRMDatabase.Tables;
         {
             string type = "";
             foreach (var call in BatCalls ?? new List<Call>())
-            { type += $"{call.CallType};"; }
+            {
+                if (!string.IsNullOrWhiteSpace(type)) type += Environment.NewLine;
+                type += $"{call.CallType};"; 
+            }
             return type;
 
         }
@@ -51,10 +54,66 @@ namespace BRMDatabase.Tables;
             string flow = "";
             foreach(Call call in BatCalls?.ToList()??new List<Call>())
             {
-                if (!string.IsNullOrEmpty(flow)) flow += " / ";
-                flow += $"{call.EndFrequency}+/-{call.EndFrequencyVariation:F2}";
+                if (!string.IsNullOrEmpty(flow)) flow += Environment.NewLine;
+                flow += $"{call.EndFrequency:F2}+/-{call.EndFrequencyVariation:F2}";
             }
             return flow;
+        }
+    }
+
+    public string FHigh
+    {
+        get
+        {
+            string fhigh = "";
+            foreach (Call call in BatCalls?.ToList() ?? new List<Call>())
+            {
+                if (!string.IsNullOrEmpty(fhigh)) fhigh += Environment.NewLine;
+                fhigh += $"{call.StartFrequency:F2}+/-{call.StartFrequencyVariation:F2}";
+            }
+            return fhigh;
+        }
+    }
+
+    public string FPeak
+    {
+        get
+        {
+            string fpk = "";
+            foreach (Call call in BatCalls?.ToList() ?? new List<Call>())
+            {
+                if (!string.IsNullOrEmpty(fpk)) fpk += Environment.NewLine;
+                fpk += $"{call.PeakFrequency:F2}+/-{call.PeakFrequencyVariation:F2}";
+            }
+            return fpk;
+        }
+    }
+
+    public string Interval
+    {
+        get
+        {
+            string ival = "";
+            foreach (Call call in BatCalls?.ToList() ?? new List<Call>())
+            {
+                if (!string.IsNullOrEmpty(ival)) ival += Environment.NewLine;
+                ival += $"{call.PulseInterval:F2}+/-{call.PulseIntervalVariation:F2}";
+            }
+            return ival;
+        }
+    }
+
+    public string Duration
+    {
+        get
+        {
+            string dur = "";
+            foreach (Call call in BatCalls?.ToList() ?? new List<Call>())
+            {
+                if (!string.IsNullOrEmpty(dur)) dur += Environment.NewLine;
+                dur += $"{call.PulseDuration:F2}+/-{call.PulseDurationVariation:F2}";
+            }
+            return dur;
         }
     }
 

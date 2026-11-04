@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Linq;
 
-namespace BRMDatabase.Utilities
+namespace BRMDatabase
 {
     public static class DBAccessMS
     {
@@ -86,12 +86,25 @@ namespace BRMDatabase.Utilities
             return recordingDbContext;
         }
 
+        public static void ReloadAllBats()
+        {
+            var context = GetContext();
+            var bats = context?.Bats.ToList();
+            foreach(var bat in bats)
+            {
+                context?.Bats.Remove(bat);
+            }
+            context?.SaveChanges();
+            PreloadBatReference(context);
+        }
+
         /// <summary>
         /// Loads the reference list of bats
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        private static void PreloadBatReference(RecordingDbContext context)
+        private static void PreloadBatReference(RecordingDbContext? context)
         {
+            if (context is null) return;
             var xmlBats = GetBatReference();
             foreach(var batXL in xmlBats??new List<XElement>())
             {
@@ -159,6 +172,7 @@ namespace BRMDatabase.Utilities
                 var newCommonNames = bat?.Descendants("BatCommonName") ?? Enumerable.Empty<XElement>();
                 if (((newCommonNames?.Count()) ?? 0) > 0) newBat.Name = (newCommonNames?.First().Value ?? "");
                 newBat.BatCalls.Clear();
+
                 var callData = bat?.Descendants("Call") ?? Enumerable.Empty<XElement>();
                 if (((callData?.Count()) ?? 0) > 0)
                 {
@@ -203,7 +217,7 @@ namespace BRMDatabase.Utilities
             mean = 0.0d;
             variation = 0.0d;
             var xFend = call.Descendants("fEnd");
-            if (!(xFend?.Any()??false))
+            if ((xFend?.Any()??false))
             {
                 parameters = xFend?.FirstOrDefault()?.Value ?? "";
                 if (!string.IsNullOrWhiteSpace(parameters))
@@ -217,7 +231,7 @@ namespace BRMDatabase.Utilities
             mean = 0.0d;
             variation = 0.0d;
             var xFpeak = call.Descendants("fPeak");
-            if (!(xFpeak?.Any() ?? false))
+            if ((xFpeak?.Any() ?? false))
             {
                 parameters = xFpeak?.FirstOrDefault()?.Value ?? "";
                 if (!string.IsNullOrWhiteSpace(parameters))
@@ -231,7 +245,7 @@ namespace BRMDatabase.Utilities
             mean = 0.0d;
             variation = 0.0d;
             var xInterval = call.Descendants("Interval");
-            if (!(xInterval?.Any() ?? false))
+            if ((xInterval?.Any() ?? false))
             {
                 parameters = xInterval?.FirstOrDefault()?.Value ?? "";
                 if (!string.IsNullOrWhiteSpace(parameters))
@@ -245,7 +259,7 @@ namespace BRMDatabase.Utilities
             mean = 0.0d;
             variation = 0.0d;
             var xDuration = call.Descendants("Duration");
-            if (!(xDuration?.Any() ?? false))
+            if ((xDuration?.Any() ?? false))
             {
                 parameters = xDuration?.FirstOrDefault()?.Value ?? "";
                 if (!string.IsNullOrWhiteSpace(parameters))
@@ -257,21 +271,21 @@ namespace BRMDatabase.Utilities
             }
 
             var xFunction = call.Descendants("Function");
-            if (!(xFunction?.Any() ?? false))
+            if ((xFunction?.Any() ?? false))
             {
                 parameters = xFunction?.FirstOrDefault()?.Value ?? "";
                 if (!string.IsNullOrWhiteSpace(parameters)) dbCall.CallFunction = parameters;
             }
 
             var xType = call.Descendants("Type");
-            if (!(xType?.Any() ?? false))
+            if ((xType?.Any() ?? false))
             {
                 parameters = xType?.FirstOrDefault()?.Value ?? "";
                 if (!string.IsNullOrWhiteSpace(parameters)) dbCall.CallType = parameters;
             }
 
             var xComments = call.Descendants("Comments");
-            if (!(xComments?.Any() ?? false))
+            if ((xComments?.Any() ?? false))
             {
                 parameters = xComments?.FirstOrDefault()?.Value ?? "";
 
