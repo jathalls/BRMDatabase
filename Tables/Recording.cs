@@ -604,7 +604,7 @@ public class Recording : INotifyPropertyChanged
     /// <summary>
     /// A displayable form of the recording notes fo use in the header of the recordingsMDPage
     /// </summary>
-    public object RecordingNotesForDisplay
+    public string RecordingNotesForDisplay
     {
         get
         {
