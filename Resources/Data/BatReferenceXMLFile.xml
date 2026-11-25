@@ -13,13 +13,26 @@
     <BatTag>PIPI</BatTag>
     <BatTag>PIPPIP</BatTag>
     <Call>
-      <fStart>50.8-95.2</fStart>
-      <fEnd>41.2-50.6</fEnd>
-      <fPeak>43.3-49.9</fPeak>
-      <Interval>59.9-211.0</Interval>
-      <Duration>3.2-8.6</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>79.8,19.3</fStart>
+      <fEnd>46.8,2.5</fEnd>
+      <fPeak>48.1,3.0</fPeak>
+      <Interval>101.6,39.3</Interval>
+      <Duration>5.5,1.4</Duration>
+      <Bandwidth>33.0,18.3</Bandwidth>
       <Function>el</Function>
-      <Type>fm-qCF/qCF</Type>
+      <Type>fm-qCF</Type>
+    </Call>
+    <Call>
+      <ref>Barataud</ref>
+      <fStart>42.4-48.8</fStart>
+      <fEnd>42.5-47.3</fEnd>
+      <fPeak>42.4-47.4</fPeak>
+      <Interval>122.6-257.6</Interval>
+      <Duration>7.6-10.2</Duration>
+      <Bandwidth>0.1-2.0</Bandwidth>
+      <Function>el</Function>
+      <Type>qCF</Type>
     </Call>
     <Label>PIPPIP</Label>
   </Bat>
@@ -36,13 +49,26 @@
     <BatTag>PIPY</BatTag>
     <BatTag>PIPPYG</BatTag>
     <Call>
-      <fStart>63.8-108.6</fStart>
-      <fEnd>53.2-60.6</fEnd>
-      <fPeak>50.2-64.1</fPeak>
-      <Interval>51.0-217.1</Interval>
-      <Duration>2.1-8.2</Duration>
+      <ref>Barataud</ref>
+      <fStart>76.4,13.8</fStart>
+      <fEnd>55.2,2.9</fEnd>
+      <fPeak>56.0,3.1</fPeak>
+      <Interval>104.1,50.3</Interval>
+      <Duration>5.6,1.8</Duration>
+      <Bandwidth>21.2,12.7</Bandwidth>
       <Function>el</Function>
-      <Type>fm-qCF/qCF</Type>
+      <Type>fm-qCF</Type>
+    </Call>
+    <Call>
+      <ref>Barataud</ref>
+      <fStart>52.1-56.9</fStart>
+      <fEnd>51.8-54.6</fEnd>
+      <fPeak>51.9-55.3</fPeak>
+      <Interval>78.1-164.3</Interval>
+      <Duration>7.4-9.0</Duration>
+      <Bandwidth>0.1-3.1</Bandwidth>
+      <Function>el</Function>
+      <Type>qCF</Type>
     </Call>
     <Label>PIPPYG</Label>
   </Bat>
@@ -56,20 +82,24 @@
     <BatTag>NYNO</BatTag>
     <BatTag>NYCNOC</BatTag>
     <Call>
-      <fStart>23.8-52.2</fStart>
-      <fEnd>21.4-32.2</fEnd>
-      <fPeak>22.4-33.6</fPeak>
-      <Interval>120.3-413.1</Interval>
-      <Duration>8.8-23.4</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>37.3,5.9</fStart>
+      <fEnd>23.5,1.8</fEnd>
+      <fPeak>24.6,2.0</fPeak>
+      <Interval>225.9,87.4</Interval>
+      <Duration>12.1,3.2</Duration>
+      <Bandwidth>13.8,4.8</Bandwidth>
       <Function>el</Function>
       <Type>fm-qCF</Type>
     </Call>
     <Call>
-      <fStart>18.2-30.4</fStart>
-      <fEnd>17.1-23.0</fEnd>
-      <fPeak>17.5-23.6</fPeak>
-      <Interval>120.2-413.3</Interval>
-      <Duration>13.2-29.9</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>21.8,2.2</fStart>
+      <fEnd>19.5,1.2</fEnd>
+      <fPeak>20.0,1.4</fPeak>
+      <Interval>371.4,115.3</Interval>
+      <Duration>16.9,3.2</Duration>
+      <Bandwidth>2.4,1.2</Bandwidth>
       <Function>el</Function>
       <Type>qCF</Type>
     </Call>
@@ -87,20 +117,24 @@
     <batTag>NYCLEI</batTag>
 
     <Call>
-      <fStart>29.8-61.7</fStart>
-      <fEnd>24.2-30.7</fEnd>
-      <fPeak>25.0-32.1</fPeak>
-      <Interval>107.3-313.1</Interval>
-      <Duration>6.1-18.4</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>43.1,7.6</fStart>
+      <fEnd>25.7,1.4</fEnd>
+      <fPeak>26.9,1.8</fPeak>
+      <Interval>212.9,106.0</Interval>
+      <Duration>9.1,2.5</Duration>
+      <Bandwidth>17.4,6.9</Bandwidth>
       <Function>el</Function>
       <Type>fm-qCF</Type>
     </Call>
     <Call>
-      <fStart>23.5-29.9</fStart>
-      <fEnd>20.9-24.1</fEnd>
-      <fPeak>21.9-24.6</fPeak>
-      <Interval>100.2-801.2</Interval>
-      <Duration>10.5-25.1</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>26.0,2.0</fStart>
+      <fEnd>24.0,1.6</fEnd>
+      <fPeak>24.7,1.6</fPeak>
+      <Interval>315.2,109.6</Interval>
+      <Duration>12.0,3.3</Duration>
+      <Bandwidth>2.0,1.0</Bandwidth>
       <Function>el</Function>
       <Type>qCF</Type>
     </Call>
@@ -113,6 +147,7 @@
     <BatTag>Nyctalus sp</BatTag>
     <BatTag>Nyctalus sp.</BatTag>
     <BatTag>Nyctalus?</BatTag>
+    <Label>NYCsp</Label>
   </Bat>
   <Bat Name="Daubentons">
     <BatGenus>Myotis</BatGenus>
@@ -126,13 +161,69 @@
     <BatTag>MYDA</BatTag>
     <BatTag>MYODAU</BatTag>
     <Call>
-      <fStart>50.3-109.7</fStart>
-      <fEnd>22.4-38.6</fEnd>
-      <fPeak>41.8-56.5</fPeak>
-      <Interval>27.5-186.0</Interval>
-      <Duration>1.4-5.8</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>87.9,8.2</fStart>
+      <fEnd>27.5,2.2</fEnd>
+      <fPeak>48.4,2.9</fPeak>
+      <Interval>62.1,14.6</Interval>
+      <Duration>2.4,0.4</Duration>
+      <Bandwidth>60.4,6.0</Bandwidth>
+      <fKnee>58-65</fKnee>
+      <fHeel>40,2</fHeel>
       <Function>el</Function>
-      <Type>fm r-sig</Type>
+      <Type>fm(B)FWMe</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>100.8,25.5</fStart>
+      <fEnd>28.2,3.4</fEnd>
+      <fPeak>55.4,7.4</fPeak>
+      <Interval>66.0,18.2</Interval>
+      <Duration>2.8,0.2</Duration>
+      <Bandwidth>72.6,22.1</Bandwidth>
+      <fKnee>58-65</fKnee>
+      <fHeel>40,2</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)ESMe</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>90.2,6.4</fStart>
+      <fEnd>32.6,0.7</fEnd>
+      <fPeak>48.4,1.2</fPeak>
+      <Interval>67.4,19.7</Interval>
+      <Duration>4.1,0.5</Duration>
+      <Bandwidth>57.6,5.7</Bandwidth>
+      <fKnee>58-65</fKnee>
+      <fHeel>40,2</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)APHi(Hunt)</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>73.0,15.0</fStart>
+      <fEnd>29.2,2.7</fEnd>
+      <fPeak>45.7,4.1</fPeak>
+      <Interval>99.3,31.0</Interval>
+      <Duration>4.7,0.8</Duration>
+      <Bandwidth>43.8,12.3</Bandwidth>
+      <fKnee>58-65</fKnee>
+      <fHeel>40,2</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)APHi(Open)</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>83.5,11.4</fStart>
+      <fEnd>25.4,3.8</fEnd>
+      <fPeak>46.1,5.4</fPeak>
+      <Interval>83.9,21.0</Interval>
+      <Duration>4.9,1.5</Duration>
+      <Bandwidth>58.1,7.6</Bandwidth>
+      <fKnee>58-65</fKnee>
+      <fHeel>40,2</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)APMe</Type>
     </Call>
     <Label>MYODAU</Label>
   </Bat>
@@ -148,13 +239,52 @@
     <BatTag>MYNA</BatTag>
     <BatTag>MYONAT</BatTag>
     <Call>
-      <fStart>72.1-145.3</fStart>
-      <fEnd>14.9-29.0</fEnd>
-      <fPeak>36.0-66.8</fPeak>
-      <Interval>31.6-188.9</Interval>
-      <Duration>1.9-7.1</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>124.9,15.3</fStart>
+      <fEnd>13.8,3.1</fEnd>
+      <fPeak>56.0,8.5</fPeak>
+      <Interval>51.8,21.1</Interval>
+      <Duration>3.9,1.5</Duration>
+      <Bandwidth>111.1,12.2</Bandwidth>
+      <fHeel>40-45</fHeel>
       <Function>el</Function>
-      <Type>fm2</Type>
+      <Type>fm(B)FWLo</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>108.7,16.7</fStart>
+      <fEnd>19.7,2.0</fEnd>
+      <fPeak>53.3,6.6</fPeak>
+      <Interval>98.5,63</Interval>
+      <Duration>3.5,1</Duration>
+      <Bandwidth>89.0,14.7</Bandwidth>
+      <fHeel>40-45</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)FWLo(Open)</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>110.7,30.7</fStart>
+      <fEnd>41.8,11.3</fEnd>
+      <fPeak>72.3,9.7</fPeak>
+      <Interval>103.0,32.7</Interval>
+      <Duration>4.1,1.5</Duration>
+      <Bandwidth>68.9,19.4</Bandwidth>
+      <fHeel>40-45</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)APHi</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>78.8,16.0</fStart>
+      <fEnd>20.9,1.5</fEnd>
+      <fPeak>41.2,2.4</fPeak>
+      <Interval>121.6,43.0</Interval>
+      <Duration>4.8,1.5</Duration>
+      <Bandwidth>56.9,14.5</Bandwidth>
+      <fHeel>40-45</fHeel>
+      <Function>el</Function>
+      <Type>fm(B)APLo</Type>
     </Call>
     <Label>MYONAT</Label>
   </Bat>
@@ -165,13 +295,26 @@
     <BatTag>Serotine</BatTag>
     <BatTag>ES</BatTag>
     <Call>
-      <fStart>39.1-78.0</fStart>
-      <fEnd>22.4-32.0</fEnd>
-      <fPeak>24.1-32.2</fPeak>
-      <Interval>65.1-159.0</Interval>
-      <Duration>1.6-12.3</Duration>
+      <Ref>Barataud</Ref>
+      <fStart>52.6,12.7</fStart>
+      <fEnd>26.1,2.6</fEnd>
+      <fPeak>30.4,5.3</fPeak>
+      <Interval>169.8,85.2</Interval>
+      <Duration>8.3,4.1</Duration>
+      <Bandwidth>26.5,11.4</Bandwidth>
       <Function>el</Function>
-      <Type>fm-qCF/qCF</Type>
+      <Type>fm-qCF</Type>
+    </Call>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>26.2,1.0</fStart>
+      <fEnd>22.2,0.4</fEnd>
+      <fPeak>23.1,0.7</fPeak>
+      <Interval>404.7,136.6</Interval>
+      <Duration>12.7,1.4</Duration>
+      <Bandwidth>4.0,0.9</Bandwidth>
+      <Function>el</Function>
+      <Type>qCF</Type>
     </Call>
     <Label>EPTSER</Label>
   </Bat>
@@ -190,8 +333,76 @@
       <fPeak>25.5-42.1</fPeak>
       <Interval>21.4-172.4</Interval>
       <Duration>1.2-3.8</Duration>
+      <Bandwidth>27.5,5.6</Bandwidth>
       <Function>el</Function>
-      <Type>fm2</Type>
+      <Type>fm2(R)</Type>
+    </Call>
+    <Call>
+      <fStart>51.7,3.9</fStart>
+      <fEnd>26.6,3.5</fEnd>
+      <fPeak>41.5,2.5</fPeak>
+      <fPeak2>64.9,3.9</fPeak2>
+      <Interval>35.3,17.8</Interval>
+      <Duration>1.6,0.2</Duration>
+      <Bandwidth>25.1,6.3</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B-H1)0-2ms</Type>
+    </Call>
+    <Call>
+      <fStart>50.6,6.4</fStart>
+      <fEnd>23.7,2.1</fEnd>
+      <fPeak>34.6,5.3</fPeak>
+      <fPeak2>58.4,4.6</fPeak2>
+      <Interval>84.3,34.5</Interval>
+      <Duration>2.6,0.3</Duration>
+      <Bandwidth>26.9,5.5</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B-H1)2-3ms</Type>
+    </Call>
+
+    <Call>
+      <fStart>49.5,4.3</fStart>
+      <fEnd>22.7,1.8</fEnd>
+      <fPeak>32.0,4.3</fPeak>
+      <fPeak2>56.1,3.5</fPeak2>
+      <Interval>102.7,43.1</Interval>
+      <Duration>3.4,0.3</Duration>
+      <Bandwidth>26.8,4.0</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B-H1)3-4ms</Type>
+    </Call>
+    <Call>
+      <fStart>51.0,5.2</fStart>
+      <fEnd>21.9,2.1</fEnd>
+      <fPeak>32.0,3.5</fPeak>
+      <fPeak2>56.6,5.3</fPeak2>
+      <Interval>111.4,34.2</Interval>
+      <Duration>4.4,0.3</Duration>
+      <Bandwidth>29.1,4.9</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B-H1)4-5ms</Type>
+    </Call>
+    <Call>
+      <fStart>50.8,3.2</fStart>
+      <fEnd>18.3,2.2</fEnd>
+      <fPeak>29.2,2.2</fPeak>
+      <fPeak2>49.6,3.6</fPeak2>
+      <Interval>195.4,76.5</Interval>
+      <Duration>5.5,0.3</Duration>
+      <Bandwidth>32.5,3.4</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B-H1)5-6ms</Type>
+    </Call>
+    <Call>
+      <fStart>48.7,3.4</fStart>
+      <fEnd>17.0,1.7</fEnd>
+      <fPeak>27.3,1.5</fPeak>
+      <fPeak2>48.3,2.4</fPeak2>
+      <Interval>172.4,54.0</Interval>
+      <Duration>6.8,0.5</Duration>
+      <Bandwidth>31.7,4.5</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B-H1)6-8ms</Type>
     </Call>
     <Label>PLEAUR</Label>
   </Bat>
@@ -210,6 +421,7 @@
       <fPeak>26.3-60.5</fPeak>
       <Interval>35.8-194.0</Interval>
       <Duration>1.4-7.0</Duration>
+      <Bandwidth>19.7,4.7</Bandwidth>
       <Function>el</Function>
       <Type>fm2-fm2.5</Type>
     </Call>
@@ -235,7 +447,7 @@
       <Function>el</Function>
       <Type>fm2</Type>
     </Call>
-    <Label>PLESP</Label>
+    <Label>PLEsp</Label>
   </Bat>
   <Bat Name="Barbastelle">
     <BatGenus>Barbastellus</BatGenus>
@@ -254,6 +466,7 @@
       <fPeak>33.5-43.8</fPeak>
       <Interval>43.2-144.9</Interval>
       <Duration>2.0-6.6</Duration>
+      <Bandwidth>11.3,2.8</Bandwidth>
       <Function>el</Function>
       <Type>qCF-fm</Type>
     </Call>
@@ -263,6 +476,7 @@
       <fPeak>29.2-44.7</fPeak>
       <Interval>41.8-229.0</Interval>
       <Duration>2.5-5.1</Duration>
+      <Bandwidth>9.8,2.0</Bandwidth>
       <Function>el</Function>
       <Type>fm1/fm2</Type>
     </Call>
@@ -279,7 +493,7 @@
     <BatTag>MYsp</BatTag>
     <BatTag>MYOsp</BatTag>
     <BatTag>WAB</BatTag>
-    <Label>MYOSP</Label>
+    <Label>MYOsp</Label>
   </Bat>
   <Bat Name="P50">
     <BatGenus>Pipistrellus</BatGenus>
@@ -311,15 +525,28 @@
     <BatTag>PINA</BatTag>
     <BatTag>PIPNAT</BatTag>
     <Call>
+      <Ref>Barataud</Ref>
       <fStart>40.0-66.8</fStart>
       <fEnd>35.2-38.9</fEnd>
       <fPeak>35.5-41.9</fPeak>
       <Interval>88.6-237.0</Interval>
       <Duration>3.0-7.9</Duration>
+      <Bandwidth>21.0,15.7</Bandwidth>
       <Function>el</Function>
-      <Type>fm-qCF/qCF</Type>
+      <Type>fm-qCF</Type>
     </Call>
-    <label>PIPNAT</label>
+    <Call>
+      <Ref>Barataud</Ref>
+      <fStart>40.1-43.7</fStart>
+      <fEnd>35.5-40.9</fEnd>
+      <fPeak>35.1-41.5</fPeak>
+      <Interval>113.3-221.7</Interval>
+      <Duration>7.4-9.2</Duration>
+      <Bandwidth>0.9-3.5</Bandwidth>
+      <Function>el</Function>
+      <Type>qCF</Type>
+    </Call>
+    <Label>PIPNAT</Label>
   </Bat>
   <Bat Name="Savis">
     <BatGenus>Hypsugo</BatGenus>
@@ -347,7 +574,7 @@
     <Call>
       <fStart>62.2-78.5</fStart>
       <fEnd>58.1-80.9</fEnd>
-      <fPeak>81.3</fPeak>
+      <fPeak>82.4,1.7</fPeak>
       <Interval>24.9-186.6</Interval>
       <Duration>16.3-73.8</Duration>
       <Function>el</Function>
@@ -370,7 +597,7 @@
     <Call>
       <fStart>92.3-107.8</fStart>
       <fEnd>83.4-110.3</fEnd>
-      <fPeak>107.3-114</fPeak>
+      <fPeak>109.4,2.8</fPeak>
       <Interval>14.1-113.7</Interval>
       <Duration>11.9-61.4</Duration>
       <Function>el</Function>
@@ -389,13 +616,100 @@
     <BatTag>MYBR</BatTag>
     <BatTag>MYOBRA</BatTag>
     <Call>
-      <fStart>59.0-121.9</fStart>
-      <fEnd>25.8-41.8</fEnd>
-      <fPeak>38.0-78.4</fPeak>
-      <Interval>56.7-161</Interval>
-      <Duration>1.5-5.0</Duration>
+      <fStart>101.6,20.1</fStart>
+      <fEnd>34.5,4.2</fEnd>
+      <fPeak>54.5,6.7</fPeak>
+      <Interval>49.5,16.6</Interval>
+      <Duration>1.8,0.4</Duration>
+      <Bandwidth>67.1,15.9</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
       <Function>el</Function>
-      <Type>fm1/fm1.2</Type>
+      <Type>fm1/fm1.2(B)FWHi</Type>
+    </Call>
+    <Call>
+      <fStart>99.5,19.7</fStart>
+      <fEnd>28.3,3.4</fEnd>
+      <fPeak>49.9,4.0</fPeak>
+      <Interval>69.9,22.8</Interval>
+      <Duration>1.9,0.3</Duration>
+      <Bandwidth>71.2,16.3</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)FWMe</Type>
+    </Call>
+    <Call>
+      <fStart>99.5,19.7</fStart>
+      <fEnd>28.3,3.4</fEnd>
+      <fPeak>49.9,4.0</fPeak>
+      <Interval>69.9,22.8</Interval>
+      <Duration>1.9,0.3</Duration>
+      <Bandwidth>71.2,16.3</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)ES-FW</Type>
+    </Call>
+    <Call>
+      <fStart>93.4,20.0</fStart>
+      <fEnd>30.9,5.8</fEnd>
+      <fPeak>50.9,4.2</fPeak>
+      <Interval>76.0,19.0</Interval>
+      <Duration>2.3,1.2</Duration>
+      <Bandwidth>62.5,14.2</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)ES-FW</Type>
+    </Call>
+    <Call>
+      <fStart>96.8,14.9</fStart>
+      <fEnd>34.7,3.2</fEnd>
+      <fPeak>59.9,7.0</fPeak>
+      <Interval>73.2,27.6</Interval>
+      <Duration>3.3,0.6</Duration>
+      <Bandwidth>62.1,11.7</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)ESHi</Type>
+    </Call>
+    <Call>
+      <fStart>91.8,17.5</fStart>
+      <fEnd>26.2,2.7</fEnd>
+      <fPeak>52.8,6.4</fPeak>
+      <Interval>82.7,17.0</Interval>
+      <Duration>3.6,0.6</Duration>
+      <Bandwidth>65.6,14.8</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)APMe</Type>
+    </Call>
+    <Call>
+      <fStart>87.9,13.5</fStart>
+      <fEnd>24.3,1.5</fEnd>
+      <fPeak>49.1,3.5</fPeak>
+      <Interval>115.2,35</Interval>
+      <Duration>4.6,0.5</Duration>
+      <Bandwidth>63.6,12.0</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)APMe(Open)</Type>
+    </Call>
+    <Call>
+      <fStart>92.2,6.2</fStart>
+      <fEnd>18.6,0.8</fEnd>
+      <fPeak>49.4,3.8</fPeak>
+      <Interval>120.4,36.6</Interval>
+      <Duration>5.2,0.3</Duration>
+      <Bandwidth>73.6,5.4</Bandwidth>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Function>el</Function>
+      <Type>fm1/fm1.2(B)APLo</Type>
     </Call>
     <Label>MYOBRA</Label>
   </Bat>
@@ -411,13 +725,40 @@
     <BatTag>MYMYS</BatTag>
     <BatTag>MYOMYS</BatTag>
     <Call>
-      <fStart>69.9-101.8</fStart>
-      <fEnd>25.6-43.3</fEnd>
-      <fPeak>39.2-68.5</fPeak>
-      <Interval>66.7-251.5</Interval>
-      <Duration>3.1-6.4</Duration>
+      <fStart>92.7,19.6</fStart>
+      <fEnd>28.1,2.5</fEnd>
+      <fPeak>52.6,7.3</fPeak>
+      <Interval>61.1,9.7</Interval>
+      <Duration>2.4,0.5</Duration>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Bandwidth>64.6,17.1</Bandwidth>
       <Function>el</Function>
-      <Type>fm1/fm1.1</Type>
+      <Type>fm1/fm1.1(B)FWMe</Type>
+    </Call>
+    <Call>
+      <fStart>103.1,15.2</fStart>
+      <fEnd>25.1,2.9</fEnd>
+      <fPeak>53.3,7.6</fPeak>
+      <Interval>100.5,28.7</Interval>
+      <Duration>3.6,0.4</Duration>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Bandwidth>78.0,12.3</Bandwidth>
+      <Function>el</Function>
+      <Type>fm1/fm1.1(B)ESMe</Type>
+    </Call>
+    <Call>
+      <fStart>88.5,18.5</fStart>
+      <fEnd>26.5,2.3</fEnd>
+      <fPeak>45.0,4.2</fPeak>
+      <Interval>101.1,38.1</Interval>
+      <Duration>4.5,0.7</Duration>
+      <fKnee>55-60</fKnee>
+      <fHeel>45-50</fHeel>
+      <Bandwidth>62.0,16.2</Bandwidth>
+      <Function>el</Function>
+      <Type>fm1/fm1.1(B)APMe</Type>
     </Call>
     <label>MYOMYS</label>
   </Bat>
@@ -431,13 +772,16 @@
     <BatTag>MYAL</BatTag>
     <BatTag>MYOALC</BatTag>
     <Call>
-      <fStart>111.0-120.0</fStart>
-      <fEnd>40.0-50.0</fEnd>
-      <fPeak>42.9-61.9</fPeak>
-      <Interval>47.0-99.0</Interval>
-      <Duration>0.0-4.0</Duration>
+      <fStart>102.0,15.1</fStart>
+      <fEnd>41.2,3.7</fEnd>
+      <fPeak>57.2,4.8</fPeak>
+      <Interval>81.1,27.7</Interval>
+      <Duration>2.9,0.8</Duration>
+      <Bandwidth>60.8,11.4</Bandwidth>
+      <fKnee>60-61</fKnee>
+      <fHeel>45-55</fHeel>
       <Function>el</Function>
-      <Type>fm2</Type>
+      <Type>fm2(B)ESHi</Type>
     </Call>
     <Label>MYOALC</Label>
   </Bat>
@@ -452,13 +796,44 @@
     <BatTag>MYBE</BatTag>
     <BatTag>MYOBEC</BatTag>
     <Call>
-      <fStart>65.0-130.9</fStart>
-      <fEnd>28.0-40.4</fEnd>
-      <fPeak>45.1-55.9</fPeak>
-      <Interval>79.4-188.9</Interval>
-      <Duration>1.6-3.5</Duration>
+      <fStart>106.2,16.3</fStart>
+      <fEnd>34.1,3.0</fEnd>
+      <fPeak>59.6,5.4</fPeak>
+      <Interval>55.9,19.6</Interval>
+      <Duration>2.3,0.4</Duration>
+      <Bandwidth>72.1,13.3</Bandwidth>
       <Function>el</Function>
-      <Type>fm1</Type>
+      <Type>fm1(B)FWHi</Type>
+    </Call>
+    <Call>
+      <fStart>98.1,13.7</fStart>
+      <fEnd>27.2,3.6</fEnd>
+      <fPeak>46.3,3.9</fPeak>
+      <Interval>55,18.9</Interval>
+      <Duration>3.4,1.1</Duration>
+      <Bandwidth>70.9,10.1</Bandwidth>
+      <Function>el</Function>
+      <Type>fm1(B)FWMe</Type>
+    </Call>
+    <Call>
+      <fStart>87.7,15.6</fStart>
+      <fEnd>23.5,3.0</fEnd>
+      <fPeak>43.5,4.6</fPeak>
+      <Interval>108.1,29.0</Interval>
+      <Duration>4.4,0.8</Duration>
+      <Bandwidth>64.2,12.6</Bandwidth>
+      <Function>el</Function>
+      <Type>fm1(B)APMe</Type>
+    </Call>
+    <Call>
+      <fStart>80.2,16.8</fStart>
+      <fEnd>20.7,1.8</fEnd>
+      <fPeak>40.1,4.6</fPeak>
+      <Interval>122.3,48.0</Interval>
+      <Duration>8.6,3.7</Duration>
+      <Bandwidth>59.5,15.0</Bandwidth>
+      <Function>el</Function>
+      <Type>fm1(B)APLo</Type>
     </Call>
     <Label>MYOBEC</Label>
   </Bat>
@@ -472,13 +847,54 @@
     <BatTag>MYMY</BatTag>
     <BatTag>MYOMYO</BatTag>
     <Call>
-      <fStart>52.2-104.5</fStart>
-      <fEnd>24.1-37.0</fEnd>
-      <fPeak>31.5-53.9</fPeak>
-      <Interval>46.6-159.1</Interval>
-      <Duration>2.5-7.1</Duration>
+      <fStart>98.2,13.7</fStart>
+      <fEnd>25.4,2.6</fEnd>
+      <fPeak>45.4,7.1</fPeak>
+      <Interval>57,24.9</Interval>
+      <Duration>4.4,0.7</Duration>
+      <Bandwidth>72.8,11.1</Bandwidth>
       <Function>el</Function>
-      <Type>fm2</Type>
+      <Type>fm2(B)FWMe</Type>
+    </Call>
+    <Call>
+      <fStart>92.4,21.6</fStart>
+      <fEnd>20.4,2.2</fEnd>
+      <fPeak>48.6,10.8</fPeak>
+      <Interval>69.5,41.8</Interval>
+      <Duration>3.6,0.7</Duration>
+      <Bandwidth>72.0,19.4</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B)FWLo</Type>
+    </Call>
+    <Call>
+      <fStart>82.8,10.6</fStart>
+      <fEnd>25.8,1.8</fEnd>
+      <fPeak>40.5,4.1</fPeak>
+      <Interval>102.4,26.8</Interval>
+      <Duration>5.5,1.0</Duration>
+      <Bandwidth>57.0,8.8</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B)APMe</Type>
+    </Call>
+    <Call>
+      <fStart>69.9,11.5</fStart>
+      <fEnd>21.5,1.0</fEnd>
+      <fPeak>35.2,4.8</fPeak>
+      <Interval>114.5,44.7</Interval>
+      <Duration>6.4,1.0</Duration>
+      <Bandwidth>48.4,10.5</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B)APLo</Type>
+    </Call>
+    <Call>
+      <fStart>69.1,14.3</fStart>
+      <fEnd>21.4,1.3</fEnd>
+      <fPeak>31.9,1.9</fPeak>
+      <Interval>135.8,30.4</Interval>
+      <Duration>7.8,1.1</Duration>
+      <Bandwidth>47.7,1.3</Bandwidth>
+      <Function>el</Function>
+      <Type>fm2(B)APLo(Open)</Type>
     </Call>
     <Label>MYOMYO</Label>
   </Bat>

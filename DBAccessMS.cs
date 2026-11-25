@@ -6,6 +6,7 @@ namespace BRMDatabase
 {
     public static class DBAccessMS
     {
+        public static int CurrentDatabaseVersion = 5;
 #if DEBUG
         public static string defaultDatabase = Path.Combine(FileSystem.AppDataDirectory, "BRMDatabaseDebug.db");
         
@@ -66,11 +67,30 @@ namespace BRMDatabase
                     }
                 }
             }
+
+            if(context is null)
+            {
+                Debug.WriteLine($"Database Access Failed");
+                throw new InvalidOperationException($"Failed to access a database");
+            }
+
             if (!(context?.Database.EnsureCreated()??false))
             {
                 Debug.WriteLine($"Database exists");
             }
+            else
+            {
+                Debug.WriteLine("Database Created");
+            }
 
+            var numversions = context?.DbVersions.Count();
+            var dbVersion = -1;
+            if(numversions>=1)
+                dbVersion = context?.DbVersions.Select(v => v.Version).Max() ?? -1;
+            if(dbVersion < CurrentDatabaseVersion)
+            {
+                context = UpdateDatabase(dbVersion,context);
+            }
 
             if (!isBatListLoaded)
             {
@@ -84,6 +104,45 @@ namespace BRMDatabase
 
             recordingDbContext = context;
             return recordingDbContext;
+        }
+
+        private static RecordingDbContext UpdateDatabase(int dbVersion, RecordingDbContext context)
+        {
+            try
+            {
+                using var transaction = context.Database.BeginTransaction();
+                if (dbVersion < 5)
+                {
+                    context.Database.ExecuteSqlRaw(
+                "ALTER TABLE Calls ADD COLUMN KneeFrequency REAL NOT NULL DEFAULT 0.0");
+
+                    context.Database.ExecuteSqlRaw(
+                        "ALTER TABLE Calls ADD COLUMN KneeFrequencyVariation REAL NOT NULL DEFAULT 0.0");
+
+                    context.Database.ExecuteSqlRaw(
+                "ALTER TABLE Calls ADD COLUMN HeelFrequency REAL NOT NULL DEFAULT 0.0");
+
+                    context.Database.ExecuteSqlRaw(
+                        "ALTER TABLE Calls ADD COLUMN HeelFrequencyVariation REAL NOT NULL DEFAULT 0.0");
+
+                    context.DbVersions.Add(new DbVersion { Version = 5 });
+                    context.SaveChanges();
+
+                    dbVersion = 5;
+
+                }
+                if (dbVersion != CurrentDatabaseVersion)
+                {
+                    throw new InvalidOperationException($"No database upgradepath from version {dbVersion} to {CurrentDatabaseVersion}");
+                }
+                transaction.Commit();
+                PreloadBatReference(context, UpdateDatabase: true);
+            }catch(Exception ex)
+            {
+                Debug.WriteLine($"Database Upgrade Failed: {ex.Message}");
+                throw new InvalidOperationException($"Database Upgrade Failed:- {ex.Message}");
+            }
+            return context;
         }
 
         public static void ReloadAllBats()
@@ -102,13 +161,14 @@ namespace BRMDatabase
         /// Loads the reference list of bats
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        private static void PreloadBatReference(RecordingDbContext? context)
+        private static void PreloadBatReference(RecordingDbContext? context,bool UpdateDatabase=false)
         {
             if (context is null) return;
             var xmlBats = GetBatReference();
             foreach(var batXL in xmlBats??new List<XElement>())
             {
-                InsertBatElement(batXL, context);
+                
+                InsertBatElement(batXL, context,UpdateDatabase);
             }
             
         }
@@ -119,14 +179,25 @@ namespace BRMDatabase
         /// <param name="batXL"></param>
         /// <param name="context"></param>
         /// <exception cref="NotImplementedException"></exception>
-        private static void InsertBatElement(XElement batXL, RecordingDbContext context)
+        private static void InsertBatElement(XElement batXL, RecordingDbContext context,bool UpdateDatabase=false)
         {
             if (batXL is null) return;
             if (context is null) return;
             var batEx = ConvertXmlBat(batXL);
             if (batEx != null)
             {
-                context.Bats.Add(batEx);
+                if (UpdateDatabase)
+                {
+                    var existingBatID=context.Bats.Where(b=>b.BatGenus==batEx.BatGenus && b.BatSpecies==batEx.BatSpecies).Select(e=>e.ID).FirstOrDefault();
+                    
+                    batEx.ID = existingBatID;
+                    
+                    context.Bats.Update(batEx);
+                }
+                else
+                {
+                    context.Bats.Add(batEx);
+                }
                 context.SaveChanges();
             }
 
@@ -241,6 +312,36 @@ namespace BRMDatabase
                         dbCall.PeakFrequencyVariation = variation;
                     }
             }
+
+            mean = 0.0d;
+            variation = 0.0d;
+            var xFknee = call.Descendants("fKnee");
+            if ((xFknee?.Any() ?? false))
+            {
+                parameters = xFknee?.FirstOrDefault()?.Value ?? "";
+                if (!string.IsNullOrWhiteSpace(parameters))
+                    if (MauiLib1.Tools.GetValuesAsMeanAndVariation(parameters, out mean, out variation))
+                    {
+                        dbCall.KneeFrequency = mean;
+                        dbCall.KneeFrequencyVariation = variation;
+                    }
+            }
+
+            mean = 0.0d;
+            variation = 0.0d;
+            var xFheel = call.Descendants("fHeel");
+            if ((xFheel?.Any() ?? false))
+            {
+                parameters = xFheel?.FirstOrDefault()?.Value ?? "";
+                if (!string.IsNullOrWhiteSpace(parameters))
+                    if (MauiLib1.Tools.GetValuesAsMeanAndVariation(parameters, out mean, out variation))
+                    {
+                        dbCall.HeelFrequency = mean;
+                        dbCall.HeelFrequencyVariation = variation;
+                    }
+            }
+
+
 
             mean = 0.0d;
             variation = 0.0d;
@@ -965,6 +1066,10 @@ namespace BRMDatabase
                 call.SecondHalfPeakVariation = XmlConvert.ToDouble(Xcall?.Attribute("SecondHalfPeakVariation")?.Value ?? "0");
                 call.StartFrequency = XmlConvert.ToDouble(Xcall?.Attribute("StartFrequency")?.Value ?? "0");
                 call.StartFrequencyVariation = XmlConvert.ToDouble(Xcall?.Attribute("StartFrequencyVariation")?.Value ?? "0");
+                call.KneeFrequency = XmlConvert.ToDouble(Xcall?.Attribute("KneeFrequency")?.Value ?? "0");
+                call.KneeFrequencyVariation = XmlConvert.ToDouble(Xcall?.Attribute("KneeFrequencyVariation")?.Value ?? "0");
+                call.HeelFrequency = XmlConvert.ToDouble(Xcall?.Attribute("HeelFrequency")?.Value ?? "0");
+                call.HeelFrequencyVariation = XmlConvert.ToDouble(Xcall?.Attribute("HeelFrequencyVariation")?.Value ?? "0");
                 result.Add(call);
 
                

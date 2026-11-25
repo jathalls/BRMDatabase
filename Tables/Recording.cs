@@ -640,7 +640,7 @@ public class Recording : INotifyPropertyChanged
     /// 
     /// </summary>
     /// <returns></returns>
-    public async Task<string> GetFQFileName()
+    public string GetFQFileName()
     {
 
         return  RecordingNameFull;

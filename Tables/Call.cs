@@ -63,6 +63,18 @@ public class Call
 
     [XmlAttribute("ByAutoID")]
     public bool ByAutoID { get; set; } = false;
+
+    [XmlAttribute("KneeFrequency")]
+    public double KneeFrequency { get; set; } = 0.0d;
+
+    [XmlAttribute("KneeFrequencyVariation")]
+    public double KneeFrequencyVariation { get; set; } = 0.0d;
+
+    [XmlAttribute("HeelFrequency")]
+    public double HeelFrequency { get; set; } = 0.0d;
+
+    [XmlAttribute("HeelFrequencyVariation")]
+    public double HeelFrequencyVariation { get; set; } = 0.0d;
  
     public int? batID { get; set; } = 0;
   
