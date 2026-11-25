@@ -1,10 +1,12 @@
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace BRMDatabase.Tables;
 
 
 public class Call
 {
- 
+
     public int ID { get; set; }
 
     [XmlAttribute("CallFunction")]
@@ -16,7 +18,7 @@ public class Call
     [XmlAttribute("CallType")]
     public string CallType { get; set; } = string.Empty;
 
-    
+
 
     [XmlAttribute("PeakFrequency")]
     public double PeakFrequency { get; set; } = 0.0d;
@@ -75,12 +77,31 @@ public class Call
 
     [XmlAttribute("HeelFrequencyVariation")]
     public double HeelFrequencyVariation { get; set; } = 0.0d;
- 
+
     public int? batID { get; set; } = 0;
-  
+
     public int? SegmentID { get; set; } = 0;
 
     public virtual Bat? Bat { get; set; } = null;
 
     public virtual LabelledSegment? Segment { get; set; } = null;
+
+    /////////////////////////////////////////////////////////////////////////////
+    /// Not Mapped
+    /// 
+
+    [NotMapped]
+    public string FMax { get => $"{StartFrequency:F2} +/- {StartFrequencyVariation:F2}"; }
+
+    [NotMapped]
+    public string FPeak { get => $"{PeakFrequency:F2} +/- {PeakFrequencyVariation:F2}"; }
+
+    [NotMapped]
+    public string FLow { get => $"{EndFrequency:F2} +/- {EndFrequencyVariation:F2}"; }
+
+    [NotMapped]
+    public string Interval { get =>$"{PulseInterval:F2} +/- {PulseIntervalVariation:F2}"; }
+
+    [NotMapped]
+    public string Duration { get => $"{PulseDuration:F2} +/- {PulseDurationVariation:F2}"; }
 }
